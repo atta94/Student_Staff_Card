@@ -14,15 +14,15 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class Staff_Recyclerview_Adapter extends RecyclerView.Adapter<Staff_Recyclerview_Adapter.MyViewHolder> {
+public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.MyViewHolder> {
 
 
 
    public Context mContext;
-    List<Staff_Model> mData;
+    List<Staff> mData;
 
 
-    public Staff_Recyclerview_Adapter(Context mContext, List<Staff_Model> mData) {
+    public StaffAdapter(Context mContext, List<Staff> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -31,25 +31,25 @@ public class Staff_Recyclerview_Adapter extends RecyclerView.Adapter<Staff_Recyc
 
     @NonNull
     @Override
-    public Staff_Recyclerview_Adapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public StaffAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
         v = LayoutInflater.from ( mContext ).inflate ( R.layout.cardview_staff_item, parent, false );
-        Staff_Recyclerview_Adapter.MyViewHolder myViewHolder = new Staff_Recyclerview_Adapter.MyViewHolder ( v );
+        StaffAdapter.MyViewHolder myViewHolder = new StaffAdapter.MyViewHolder ( v );
         return myViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        final Staff_Model currentItem = mData.get ( position );
+        final Staff currentItem = mData.get ( position );
 
-//        holder.staffname.setText ( mData.get ( position ).getName () );
-//        holder.staffnumber.setText ( mData.get ( position ).getNumber () );
-//        holder.staffimg.setImageResource ( mData.get ( position ).getImage () );
+//        holder.mstaffimg.setImageResource ( currentItem.getImage () );
+        holder.mstaffname.setText ( currentItem.getFirstName () );
+        holder.mstaffnumber.setText ( currentItem.getDesignationId () );
 
-        holder.mstaffimg.setImageResource ( currentItem.getImage () );
-        holder.mstaffname.setText ( currentItem.getName () );
-        holder.mstaffnumber.setText ( currentItem.getNumber () );
+        if(currentItem.getStatus ().equals ( "Accepted" )) {
+            holder.mstaffver.setImageResource ( R.drawable.ic_verified );
+        }
 
 
 
@@ -57,9 +57,16 @@ public class Staff_Recyclerview_Adapter extends RecyclerView.Adapter<Staff_Recyc
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent ( mContext, Staff_Detail.class );
-                intent.putExtra ( "staffimage", currentItem.getImage () );
-                intent.putExtra ( "staffname", currentItem.getName () );
-                intent.putExtra ( "staffno", currentItem.getNumber () );
+//                intent.putExtra ( "staffimage", currentItem.getImage () );
+                intent.putExtra ( "staffid", currentItem.getId ()+ "");
+                intent.putExtra ( "staffstatus", currentItem.getStatus ()+ "");
+                intent.putExtra ( "stafffname", currentItem.getFirstName () );
+                intent.putExtra ( "stafflname", currentItem.getLastName () );
+                intent.putExtra ( "staffgender", currentItem.getGenderId () );
+                intent.putExtra ( "staffdes", currentItem.getDesignationId () );
+                intent.putExtra ( "staffdep", currentItem.getDepartmentId () );
+                intent.putExtra ( "staffaddress", currentItem.getAdress () );
+
                 mContext.startActivity ( intent );
 
             }
@@ -74,7 +81,7 @@ public class Staff_Recyclerview_Adapter extends RecyclerView.Adapter<Staff_Recyc
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView mstaffimg;
+        ImageView mstaffimg,mstaffver;
         TextView mstaffname, mstaffnumber;
         public RelativeLayout cardRelativeLayout;
 
@@ -84,6 +91,9 @@ public class Staff_Recyclerview_Adapter extends RecyclerView.Adapter<Staff_Recyc
             mstaffimg = (ImageView) itemView.findViewById ( R.id.img_staff );
             mstaffname = (TextView) itemView.findViewById ( R.id.staff_name );
             mstaffnumber = (TextView) itemView.findViewById ( R.id.staff_number );
+
+            mstaffver = (ImageView) itemView.findViewById ( R.id.staff_verify );
+
             cardRelativeLayout = itemView.findViewById ( R.id.staff_cardview );
 
         }

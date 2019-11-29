@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/ic_teacherimage" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/staff_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -163,7 +163,7 @@
         tools:ignore="MissingConstraints">
 
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/dprtmentspinner"
             android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:entries="@array/dep_arrays"
@@ -185,7 +185,7 @@
         tools:ignore="MissingConstraints">
 
         <Spinner
-            android:id="@+id/spinner2"
+            android:id="@+id/designationspinner"
             android:layout_width="fill_parent"
             android:layout_height="30dp"
             android:entries="@array/des_arrays"

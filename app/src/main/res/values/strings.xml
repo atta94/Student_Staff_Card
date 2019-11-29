@@ -2,6 +2,25 @@
     <string name="app_name">Student_Staff_Card</string>
 
 
+    <string name="firstname">Enter First Name</string>
+    <string name="lastname">Enter Last Name</string>
+    <string name="fathername">Enter Father Name</string>
+    <string name="address">Enter Address Here</string>
+    <string name="contact">Enter Contact Number</string>
+
+    <string name="username">Enter User Name or Email</string>
+    <string name="password">Enter Password</string>
+    <string name="errorusername">Please Enter  valid user name or email</string>
+    <string name="errorpassword">Please Enter Valid Password</string>
+
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+
+    <string name="errorname">Please Enter Valid Name</string>
+    <string name="errorfathername">Please Enter Father Name</string>
+    <string name="erroraddress">Please Enter valid Address</string>
+    <string name="errorcontact">Please Enter Valid Contact Number</string>
+
     <string name="forgot_password"><u>Forgot Password</u>.</string>
 
 
